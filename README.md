@@ -1,1 +1,4 @@
-"# image-text-clean" 
+# Image Text Clean
+```
+PYTHONPATH=. main.py
+```
