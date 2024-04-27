@@ -1,6 +1,6 @@
 import argparse
 import os
-
+import re
 import ast
 import cv2
 import numpy as np
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
         mask_src = np.full_like(frame_src, 255, dtype=np.uint8)
         for shape, text, confidence in ocr_result:
-            if any([pattern in text.lower() for pattern in exclude_patterns]):
+            if any([re.match(pattern, text) for pattern in exclude_patterns]):
                 continue
             cv2.fillPoly(mask_src, [np.array(shape, dtype=np.int32)], 0)
 
